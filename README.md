@@ -1,6 +1,6 @@
 # Jets Project
 
-#Description
+# Description
 
 This is the third weekend project while attending Skill Distillery.
 
@@ -10,7 +10,7 @@ To use the program run it and follow the on screen prompts.
 
 
 
-#What I learned
+# What I learned
 Abstract classes
 
 Interfaces
@@ -30,6 +30,6 @@ Iterator
 Input & Output Streams
 
 
-#Technologies Used
+# Technologies Used
 
 Git, Eclipse IDE, Java
