@@ -1,29 +1,31 @@
 package com.skilldistillery.jets.entities;
 
+import java.text.NumberFormat;
 import java.util.Objects;
 
-public class Bomber extends Jets {
+public class Bomber extends Jets implements CanBomb {
 
-	private int payload;
+	private Integer payload;
 	
 	
 	public Bomber() {
 		super();
 	}
 	
-	public Bomber(int payload) {
-		super();
+	public Bomber(String model, Integer speed, Double range, Long price, Integer payload) {
+		super(model, speed, range, price);
 		this.payload = payload;
 	}
 
-	public int getPayload() {
+	
+	public Integer getPayload() {
 		return payload;
 	}
 
-	public void setPayload(int payload) {
+	public void setPayload(Integer payload) {
 		this.payload = payload;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -46,19 +48,27 @@ public class Bomber extends Jets {
 
 	@Override
 	public String toString() {
-		return "Bomber [payload=" + payload + ", toString()=" + super.toString() + "]";
+		return super.toString() + "\nThe " + super.getModel() + " can hold up to " + NumberFormat.getIntegerInstance().format(payload) + "lbs. in munitions.";
 	}
 
 	@Override
-	public double fly(int range, int speed) {
-		// TODO Auto-generated method stub
-		return 0;
+	public Double fly(Double range, Integer speed) {
+		double flightTimeHrs = range / speed;
+		return flightTimeHrs;
+		
 	}
 
 	@Override
-	public double getSpeedInMach(int speed) {
-		// TODO Auto-generated method stub
-		return 0;
+	public Double getSpeedInMach(Integer speed) {
+		double speedInMach = speed * 0.001303;
+		return speedInMach;
+	}
+
+
+	@Override
+	public void dropBombs() {
+		System.out.println("The " + this.getModel() + " drops " + payload + "lbs. of munitions.");
+		
 	}
 
 }

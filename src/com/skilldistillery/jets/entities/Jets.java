@@ -6,49 +6,58 @@ import java.util.Objects;
 public abstract class Jets implements Flyable{
 	
 	private String model;
-	private double speed;
-	private int range;
-	private long price;
+	private Integer speed;
+	private Double range;
+	private Long price;
 	
 	public Jets() {
 		
 	}
 	
-	public Jets(String model, double speed, int range, long price) {
+	public Jets(String model, Integer speed, Double range, Long price) {
 		this.model = model;
 		this.speed = speed;
 		this.range = range;
 		this.price = price;
 	}
 		
+	
+
 	public String getModel() {
 		return model;
 	}
+
 	public void setModel(String model) {
 		this.model = model;
 	}
-	public double getSpeed() {
+
+	public Integer getSpeed() {
 		return speed;
 	}
-	public void setSpeed(double speed) {
+
+	public void setSpeed(Integer speed) {
 		this.speed = speed;
 	}
-	public double getRange() {
+
+	public Double getRange() {
 		return range;
 	}
-	public void setRange(int range) {
+
+	public void setRange(Double range) {
 		this.range = range;
 	}
-	public double getPrice() {
+
+	public Long getPrice() {
 		return price;
 	}
-	public void setPrice(long price) {
+
+	public void setPrice(Long price) {
 		this.price = price;
 	}
 
 	@Override
 	public String toString() {
-		return "This plane is a "+ model + " it can fly at " + speed + "MPH and its flight range is " + NumberFormat.getIntegerInstance().format(range) + " miles you can buy one for $" + NumberFormat.getIntegerInstance().format(price) + ".";
+		return model + " it can fly at " + speed + "MPH and its flight range is " + NumberFormat.getIntegerInstance().format(range) + " miles you can buy one for $" + NumberFormat.getIntegerInstance().format(price) + ".";
 	}
 
 	@Override
@@ -70,7 +79,17 @@ public abstract class Jets implements Flyable{
 				&& Double.doubleToLongBits(range) == Double.doubleToLongBits(other.range) && speed == other.speed;
 	}
 
+	@Override
+	public Double fly(Double range, Integer speed) {
+		double flightTimeHrs = range / speed;
+		return flightTimeHrs;
+		
+	}
 	
-	
+	@Override
+	public Double getSpeedInMach(Integer speed) {
+		double speedInMach = speed * 0.001303;
+		return speedInMach;
+	}
 	
 }
