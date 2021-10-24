@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
@@ -27,7 +28,7 @@ public class JetsApplication {
 		Scanner sc = new Scanner (System.in);
 		List <Jets> sortedPlanes = new ArrayList();
 		populateAirfield(sortedPlanes);
-		menu(sortedPlanes, sc);
+			menu(sortedPlanes, sc);
 		
 	}
 
@@ -71,7 +72,13 @@ public class JetsApplication {
 			break;
 			
 		case 5:
-			loadCargoPlanes(airfield, sc);
+			try{ loadCargoPlanes(airfield, sc);
+			}catch(Exception e) {
+				System.err.println("Invalid data entry.");
+				System.out.println();
+			}finally {
+				sc.nextLine();
+			}
 			break;
 			
 		case 6:
@@ -79,11 +86,23 @@ public class JetsApplication {
 			break;
 			
 		case 7:
-			addPlane(airfield, sc);
+			try{ addPlane(airfield, sc);
+			}catch(Exception e) {
+				System.err.println("Invalid data entry.");
+				System.out.println();
+			}finally {
+				sc.nextLine();
+			}
 			break;
 			
 		case 8:
-			removePlane(airfield, sc);
+			try{ removePlane(airfield, sc);
+			}catch(Exception e) {
+				System.err.println("Invalid data entry.");
+				System.out.println();
+			}finally {
+				sc.nextLine();
+			}
 			break;
 		
 		case 9:
